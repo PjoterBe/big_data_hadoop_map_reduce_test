@@ -4,9 +4,11 @@ class MRWordCount(MRJob):
 
     def mapper(self, _, line):
         yield  'chars', len(line) #liczy liczbe znaków w pliku
+        yield 'words', len(line.split())
 
     def reducer(self, key, values):
-        yield key, sum(values) #;iczy wszystkie znaki pliku
+        yield key, sum(values) #liczy wszystkie znaki pliku
+
 
 if __name__ == '__main__':
     MRWordCount.run()
