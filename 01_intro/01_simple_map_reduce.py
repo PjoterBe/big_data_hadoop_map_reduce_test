@@ -3,7 +3,7 @@ from mrjob.job import MRJob
 class MRWordCount(MRJob):
 
     def mapper(self, _, line):
-        yield  'chars', len(line) #liczy liczbe znaków w pliku
+        yield 'chars', len(line) #liczy liczbe znaków w pliku
         yield 'words', len(line.split())
 
     def reducer(self, key, values):
